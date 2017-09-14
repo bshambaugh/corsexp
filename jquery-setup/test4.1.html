@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>This is a title</title>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+<script>
+// See: https://stackoverflow.com/questions/39042085/uncaught-typeerror-ajax-success-is-not-a-function#39042130
+// Dictionary arguments in JavaScript???
+// How about:
+// https://stackoverflow.com/questions/7196212/how-to-create-dictionary-and-add-key-value-pairs-dynamically-in-javascript#7196296
+$.ajax({
+        type: "GET",
+        url: "http://localhost/cp4-bc-node-arc-d3/node-arc-d3/data/example.json"
+       }).success( function (rooms) { 
+           var jsonData = JSON.parse(rooms); 
+           document.write(jsonData);
+        });
+</script>
+</body>
+</html>

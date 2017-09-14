@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head><title>This is a title</title></head>
+<body>
+<script>
+var invocation = new XMLHttpRequest();
+var url = 'http://bshambaugh.org/index.html';
+
+callOtherDomain(url);
+   
+function callOtherDomain() {
+  if(invocation) {    
+    invocation.open('GET', url, true);
+    invocation.onreadystatechange = handler;
+    invocation.send(); 
+  }
+}
+</script>
+</body>
+</html>

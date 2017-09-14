@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>This is a title</title>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+<script>
+// How to use the cross domain proxy
+$.ajax({
+  url: 'http://localhost/cp4-bc-node-arc-d3/node-arc-d3/data/example.json'
+}).success(function(data) { // Use the jQuery promises interface
+    var jsonData = JSON.parse(data); // Assume it returns a JSON string
+    console.log(jsonData); // Do whatever you want with the data
+});
+</script>
+</body>
+</html>

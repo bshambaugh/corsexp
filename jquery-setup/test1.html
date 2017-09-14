@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>This is a title</title>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script
+</head>
+<body>
+<script>
+$.get( "http://localhost/corsexp/test1.html", function( data ) {
+  $( ".result" ).html( data );
+  alert( "Load was performed." );
+});
+</script>
+</body>
+</html>

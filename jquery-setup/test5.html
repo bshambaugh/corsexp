@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>This is a title</title>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+<script>
+$.ajaxPrefilter( function( options ) {
+  if( options.crossDomain ) {
+     var newData = {};
+     // Copy the options.data object to the newData.data property.
+     // We need to do this becaused javascript doesn't deep-copy variables by default.
+     newData.data = $.extend({}, options.data);
+     newData.url = options.url;
+
+     // Reset the options object - we'll repopulate the following lines.
+    options = {};
+
+    // set the proxy URL
+    options.url = "http://0.0.0.0:8080";
+    options.data = $.param(newData);
+    options.crossDomain = false;
+  }
+});
+
+// See: https://stackoverflow.com/questions/39042085/uncaught-typeerror-ajax-success-is-not-a-function#39042130
+// Dictionary arguments in JavaScript???
+// How about:
+// https://stackoverflow.com/questions/7196212/how-to-create-dictionary-and-add-key-value-pairs-dynamically-in-javascript#7196296
+$.ajax({
+        type: "GET",
+        // selecting this results in a cross domain block...perhaps I need a promise...
+        // test your promises somewhere else....  
+//      url: "http://bshambaugh.org/experiments/node-arc-d3/data/example.json",
+        url: "http://localhost/cp4-bc-node-arc-d3/node-arc-d3/data/example.json",
+        crossDomain: true,
+        processData: false,
+        success: function (rooms) {  
+           document.write(JSON.stringify(rooms));
+        }
+});
+</script>
+</body>
+</html>
