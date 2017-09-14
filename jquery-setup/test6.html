@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>This is a title</title>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+<script>
+/// This code is from https://stackoverflow.com/questions/15005500/loading-cross-domain-endpoint-with-jquery-ajax
+$.ajaxPrefilter( function (options) {
+  if (options.crossDomain && jQuery.support.cors) {
+    var http = (window.location.protocol === 'http:' ? 'http:' : 'https:');
+    options.url = http + '//cors-anywhere.herokuapp.com/' + options.url;
+    //options.url = "http://cors.corsproxy.io/url=" + options.url;
+  }
+});
+
+$.get(
+    'http://en.wikipedia.org/wiki/Cross-origin_resource_sharing',
+    function (response) {
+///        console.log("> ", response);
+//        $("#viewer").html(response);
+          document.write(response);
+});
+</script>
+</body>
+</html>
